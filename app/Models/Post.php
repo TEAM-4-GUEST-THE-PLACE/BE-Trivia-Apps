@@ -16,8 +16,8 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
+        'image',
         'amount',
-        'image ',
         'price',
     ];
 
