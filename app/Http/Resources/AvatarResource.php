@@ -29,7 +29,7 @@ class AvatarResource extends JsonResource
         return [
             'success' => $this->status,
             'message' => $this->message,
-            'data' => $this->data 
+            'data' => $this->resource 
         ];
     }
 }

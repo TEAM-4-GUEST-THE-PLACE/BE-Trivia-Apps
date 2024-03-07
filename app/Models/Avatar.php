@@ -13,14 +13,6 @@ class Avatar extends Model
     protected $fillable = [
         'image',
     ];
-
-
-    protected function image(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($image) => asset('/storage/posts/' . $image),
-        );
-    }
 }
 
 

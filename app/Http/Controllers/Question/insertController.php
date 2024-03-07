@@ -7,6 +7,7 @@ use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class insertController extends Controller
 {
@@ -24,15 +25,15 @@ class insertController extends Controller
             return response()->json($validator->errors(),401);
         }
 
-        $image = $request->file('image');
-        $image->storeAs('public/questionImage', $image->hashName());
+        $uploadedFileUrl = $request->file('image')->storeOnCloudinary('questionImage');
+        
 
         $createQuestion = Question::create([
             'question' => $request->question,
             'answer' => $request->answer,
             'answerTrue' => $request->answerTrue,
             'answerFalse' => $request->answerFalse,
-            'image' => $image->hashName(),
+            'image' => $uploadedFileUrl->getSecurePath(),
         ]);
         return new QuestionResource(true, 'Succes Insert Data', $createQuestion);
     }

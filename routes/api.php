@@ -24,7 +24,12 @@ Route::get('/questions', [App\http\Controllers\Question\getController::class, 'G
 Route::get('/questions/{id}', [App\http\Controllers\Question\getDetailController::class, 'GetDataDetailController']);
 Route::post('/questions', [App\http\Controllers\Question\insertController::class, 'insertDataController']);
 Route::put('/questions/{id}', [App\http\Controllers\Question\updateController::class, 'updateDataController']);
+Route::delete('/questions/{id}', [App\http\Controllers\Question\deleteController::class, 'deleteDataController']);
 
+
+// Avatar
+Route::post('/avatar', [App\http\Controllers\Avatar\insertController::class, 'insertDataController']);
+Route::get('/avatar', [App\http\Controllers\Avatar\getController::class, 'GetDataController']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

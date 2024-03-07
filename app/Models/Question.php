@@ -22,14 +22,6 @@ class Question extends Model
     protected $casts = [
         'answer' => 'array'
     ];
-
-
-    protected function image(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($image) => asset('/storage/questionImage/' . $image),
-        );
-    }
 }
 
 
