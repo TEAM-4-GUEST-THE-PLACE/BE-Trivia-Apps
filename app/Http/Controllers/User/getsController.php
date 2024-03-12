@@ -12,10 +12,8 @@ class getsController extends Controller
 {
     public function getUsers()
     {
-        //get all posts
-        $Users = user::all();
+        $Users = User::all();
 
-        //return collection of posts as a resource
         return new UserResource(true, 'List user', $Users);
     }
 }

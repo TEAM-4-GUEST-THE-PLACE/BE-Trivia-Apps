@@ -13,10 +13,16 @@ class User extends Model
         'fullname',
         'username',
         'email',
+        'diamonds_totals',
     ];
-    
-    public function users() {
-        return $this->hasMany(User::class, 'foreign_key');
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 
+    public function avatar()
+    {
+        return $this->hasOne(Avatar::class);
+    }
 }
