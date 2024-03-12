@@ -26,10 +26,8 @@ class Post extends Model
      *
      * @return Attribute
      */
-    protected function image(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($image) => asset('/storage/posts/' . $image),
-        );
+
+     public function post() {
+        return $this->belongsTo(Post::class);
     }
 }
