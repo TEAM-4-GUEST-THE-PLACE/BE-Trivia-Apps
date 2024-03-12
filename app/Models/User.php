@@ -16,7 +16,7 @@ class User extends Model
     ];
     
     public function users() {
-        return $this->hasMany(User::class, 'foreign_key')->orWhereNull('foreign_key');
+        return $this->hasMany(User::class, 'foreign_key');
     }
 
 }
