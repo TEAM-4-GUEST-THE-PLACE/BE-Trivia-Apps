@@ -53,11 +53,8 @@ Route::delete('/RemoveDiamond/{id}', [deleteController::class, 'removeDiamond'])
 
 
 Route::get('/user', [getsController::class, 'getUsers']);
-Route::post('/AddUser', [postsController::class, 'AddUser']);
+Route::post('/user/{id}/add-diamond', [postsController::class, 'AddUser']);
 Route::put('/UpdateUser/{id}', [updatesController::class, 'updateUser']);
 Route::get('/DetailUser/{id}', [detailsController::class, 'detailUser']);
 Route::delete('/RemoveUser/{id}', [deletesController::class, 'removeUser']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});

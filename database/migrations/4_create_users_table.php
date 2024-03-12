@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('post_id')->nullable();
             $table->unsignedBigInteger('questions_id')->nullable();
             $table->unsignedBigInteger('avatars_id')->nullable();
+            $table->integer('diamonds_totals')->nullable();
             $table->string('fullname');
             $table->string('username');
             $table->string('email');
