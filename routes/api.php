@@ -5,13 +5,13 @@ use App\Http\Controllers\Diamond\getController;
 use App\Http\Controllers\Diamond\postController;
 use App\Http\Controllers\Diamond\updateController;
 
-use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\getsController;
 use App\Http\Controllers\User\postsController;
 use App\Http\Controllers\User\updatesController;
 use App\Http\Controllers\User\detailsController;
 use App\Http\Controllers\User\deletesController;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 

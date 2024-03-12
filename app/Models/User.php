@@ -14,5 +14,9 @@ class User extends Model
         'username',
         'email',
     ];
+    
+    public function users() {
+        return $this->hasMany(User::class, 'foreign_key');
+    }
 
 }

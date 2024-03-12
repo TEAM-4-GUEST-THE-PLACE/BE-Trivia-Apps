@@ -13,6 +13,10 @@ class Avatar extends Model
     protected $fillable = [
         'image',
     ];
+
+    public function avatar() {
+        return $this->belongsTo(Avatar::class);
+    }
 }
 
 

@@ -13,10 +13,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('post_id')->nullable();
+            $table->unsignedBigInteger('questions_id')->nullable();
+            $table->unsignedBigInteger('avatars_id')->nullable();
             $table->string('fullname');
             $table->string('username');
             $table->string('email');
             $table->timestamps();
+
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('questions_id')->references('id')->on('questions')->onDelete('cascade');
+            $table->foreign('avatars_id')->references('id')->on('avatars')->onDelete('cascade');
         });
     }
 
