@@ -46,14 +46,14 @@ Route::get('/avatar', [App\http\Controllers\Avatar\getController::class, 'GetDat
 
 //posts
 Route::get('/CekDiamond', [getController::class, 'getDiamond']);
-Route::post('/AddDiamond', [postController::class, 'AddDiamond']);
+Route::post('/diamond/{id}/add-diamond', [postController::class, 'AddDiamond']);
 Route::put('/UpdateDiamond/{id}', [updateController::class, 'updateDiamond']);
 Route::get('/DetailDiamond/{id}', [detailController::class, 'detailDiamond']);
 Route::delete('/RemoveDiamond/{id}', [deleteController::class, 'removeDiamond']);
 
 
 Route::get('/user', [getsController::class, 'getUsers']);
-Route::post('/user/{id}/add-diamond', [postsController::class, 'AddUser']);
+Route::post('/user', [postsController::class, 'AddUser']);
 Route::put('/UpdateUser/{id}', [updatesController::class, 'updateUser']);
 Route::get('/DetailUser/{id}', [detailsController::class, 'detailUser']);
 Route::delete('/RemoveUser/{id}', [deletesController::class, 'removeUser']);

@@ -38,6 +38,7 @@ class postsController extends Controller
             'fullname'    => $request->fullname,
             'username'  => $request->username,
             'email'   => $request->email,
+            'diamonds_totals' => 0,
         ]);
         
 

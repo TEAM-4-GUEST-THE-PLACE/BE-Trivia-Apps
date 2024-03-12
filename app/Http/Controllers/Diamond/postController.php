@@ -20,7 +20,6 @@ class postController extends Controller
     public function AddDiamond(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048' ,
             'amount'     => 'required',
             'price'   => 'required',
         ]);
@@ -29,10 +28,7 @@ class postController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $uploadedFileUrl = $request->file('image')->storeOnCloudinary('questionImage');
-
         $post = Post::create([
-            'image'    => $uploadedFileUrl->getSecurePath(),
             'amount'  => $request->amount,
             'price'   => $request->price,
         ]);
@@ -41,7 +37,7 @@ class postController extends Controller
 
         $user->posts()->save($post);
     
-        $user->increment('diamond_totals', $request->amount);
+        $user->increment('diamonds_totals', $request->amount);
 
         return new PostResource(true, 'Diamond Berhasil Ditambahkan!', $post);
     }
