@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Diamond;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
-use App\Models\Post;
+use App\Models\Diamond;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +32,7 @@ class updateController extends Controller
         }
 
         //find post by ID
-        $post = Post::find($id);
+        $post = Diamond::find($id);
 
         //check if image is not empty
         if ($request->hasFile('image')) {
