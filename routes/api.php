@@ -45,16 +45,16 @@ Route::get('/avatar', [App\http\Controllers\Avatar\getController::class, 'GetDat
 
 
 //posts
-Route::get('/CekDiamond', [getController::class, 'getDiamond']);
+Route::get('/diamond', [getController::class, 'getDiamond']);
+Route::get('/diamond/{id}', [detailController::class, 'detailDiamond']);
 Route::post('/diamond/{id}/add-diamond', [postController::class, 'AddDiamond']);
-Route::put('/UpdateDiamond/{id}', [updateController::class, 'updateDiamond']);
-Route::get('/DetailDiamond/{id}', [detailController::class, 'detailDiamond']);
-Route::delete('/RemoveDiamond/{id}', [deleteController::class, 'removeDiamond']);
+Route::put('/diamond/{id}', [updateController::class, 'updateDiamond']);
+Route::delete('/Diamond/{id}', [deleteController::class, 'removeDiamond']);
 
 
 Route::get('/user', [getsController::class, 'getUsers']);
+Route::get('/user/{id}', [detailsController::class, 'detailUser']);
 Route::post('/user', [postsController::class, 'AddUser']);
-Route::put('/UpdateUser/{id}', [updatesController::class, 'updateUser']);
-Route::get('/DetailUser/{id}', [detailsController::class, 'detailUser']);
-Route::delete('/RemoveUser/{id}', [deletesController::class, 'removeUser']);
+Route::put('/User/{id}', [updatesController::class, 'updateUser']);
+Route::delete('/User/{id}', [deletesController::class, 'removeUser']);
 
