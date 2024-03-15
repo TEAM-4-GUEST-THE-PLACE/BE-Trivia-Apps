@@ -18,7 +18,7 @@ class User extends Model
 
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Diamond::class);
     }
 
     public function avatar()

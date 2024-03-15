@@ -14,9 +14,8 @@ class insertController extends Controller
     public function insertDataController(Request $request) {
         $validator = Validator::make($request->all(), [
         'question' => 'required',
-        'answer' => 'required | array',
-        'answerTrue' => 'required',
-        'answerFalse' => 'required',
+        'options' => 'required | array',
+        'answer' => 'required',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -30,9 +29,8 @@ class insertController extends Controller
 
         $createQuestion = Question::create([
             'question' => $request->question,
+            'options' => $request->options,
             'answer' => $request->answer,
-            'answerTrue' => $request->answerTrue,
-            'answerFalse' => $request->answerFalse,
             'image' => $uploadedFileUrl->getSecurePath(),
         ]);
         return new QuestionResource(true, 'Succes Insert Data', $createQuestion);

@@ -13,9 +13,8 @@ class Question extends Model
 
     protected $fillable = [
         'question',
+        'options',
         'answer',
-        'answerTrue',
-        'answerFalse',
         'image'
     ];
 
