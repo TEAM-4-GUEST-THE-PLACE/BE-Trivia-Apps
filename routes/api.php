@@ -47,7 +47,7 @@ Route::get('/avatar', [App\http\Controllers\Avatar\getController::class, 'GetDat
 //posts
 Route::get('/diamond', [getController::class, 'getDiamond']);
 Route::get('/diamond/{id}', [detailController::class, 'detailDiamond']);
-Route::post('/diamond/{id}/add-diamond', [postController::class, 'AddDiamond']);
+Route::post('/diamond', [postController::class, 'AddDiamond']);
 Route::put('/diamond/{id}', [updateController::class, 'updateDiamond']);
 Route::delete('/Diamond/{id}', [deleteController::class, 'removeDiamond']);
 

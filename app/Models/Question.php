@@ -19,7 +19,7 @@ class Question extends Model
     ];
 
     protected $casts = [
-        'answer' => 'array'
+        'options' => 'array'
     ];
 
     public function question() {

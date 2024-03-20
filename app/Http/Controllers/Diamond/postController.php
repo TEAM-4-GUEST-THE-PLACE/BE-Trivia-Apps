@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Diamond;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
-use App\Models\Diamond;
+use App\Models\posts;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -17,7 +17,7 @@ class postController extends Controller
      * @param  mixed $request
      * @return void
      */
-    public function AddDiamond(Request $request, $id)
+    public function AddDiamond(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'amount'     => 'required',
@@ -28,16 +28,12 @@ class postController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $post = Diamond::create([
+        $post = posts::create([
             'amount'  => $request->amount,
             'price'   => $request->price,
         ]);
         
-        $user = User::where('id', $id)->firstOrFail();
-
-        $user->posts()->save($post);
-    
-        $user->increment('diamonds_totals', $request->amount);
+       
 
         return new PostResource(true, 'Diamond Berhasil Ditambahkan!', $post);
     }
