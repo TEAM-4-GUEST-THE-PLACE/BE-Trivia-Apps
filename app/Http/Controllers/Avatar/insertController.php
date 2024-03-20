@@ -13,17 +13,18 @@ class insertController extends Controller
     public function insertDataController(Request $request) {
         $validator = Validator::make($request->all(), [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'price' => 'required'
         ]);
 
         if($validator->fails()) {
             return response()->json($validator->errors(), 401);
         }
 
-        $image = $request->file('image');
         $uploadedFileUrl = $request->file('image')->storeOnCloudinary('avatarImage');
 
         $avatar = Avatar::create([
             'image' => $uploadedFileUrl->getSecurePath(),
+            'price' => $request->price,
         ]);
         return new AvatarResource(true, 'Success insert Avatar', $avatar);
     }

@@ -14,6 +14,7 @@
             Schema::create('avatars', function (Blueprint $table) {
                 $table->id();
                 $table->string('image');
+                $table->integer('price');
                 $table->timestamps();
             });
         }

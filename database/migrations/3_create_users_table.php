@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('questions_id')->nullable();
             $table->unsignedBigInteger('avatars_id')->nullable();
             $table->integer('diamonds_totals')->nullable();
             $table->string('fullname');
@@ -21,7 +20,6 @@ return new class extends Migration
             $table->string('email');
             $table->timestamps();
             
-            $table->foreign('questions_id')->references('id')->on('questions')->onDelete('cascade');
             $table->foreign('avatars_id')->references('id')->on('avatars')->onDelete('cascade');
         });
     }

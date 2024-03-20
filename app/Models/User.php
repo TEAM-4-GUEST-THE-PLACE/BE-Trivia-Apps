@@ -25,4 +25,9 @@ class User extends Model
     {
         return $this->hasOne(Avatar::class);
     }
+
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class);
+    }
 }
