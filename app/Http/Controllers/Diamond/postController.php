@@ -11,13 +11,8 @@ use Illuminate\Support\Facades\Validator;
 
 class postController extends Controller
 {
-    /**
-     * store
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    public function AddDiamond(Request $request, $id)
+
+    public function AddDiamond(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'amount'     => 'required',
@@ -32,12 +27,6 @@ class postController extends Controller
             'amount'  => $request->amount,
             'price'   => $request->price,
         ]);
-        
-        $user = User::where('id', $id)->firstOrFail();
-
-        $user->posts()->save($post);
-    
-        $user->increment('diamonds_totals', $request->amount);
 
         return new PostResource(true, 'Diamond Berhasil Ditambahkan!', $post);
     }

@@ -13,13 +13,9 @@ return new class extends Migration
     {
         Schema::create('diamond', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->integer('amount')->nullable();
             $table->integer('price')->nullable();
             $table->timestamps();
-
-            
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
