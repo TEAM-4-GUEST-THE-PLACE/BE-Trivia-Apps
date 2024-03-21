@@ -2,14 +2,16 @@
 use App\Http\Controllers\Diamond\deleteController;
 use App\Http\Controllers\Diamond\detailController;
 use App\Http\Controllers\Diamond\getController;
-use App\Http\Controllers\Diamond\postController;
 use App\Http\Controllers\Diamond\updateController;
 
 use App\Http\Controllers\User\getsController;
-use App\Http\Controllers\User\postsController;
 use App\Http\Controllers\User\updatesController;
 use App\Http\Controllers\User\detailsController;
 use App\Http\Controllers\User\deletesController;
+
+use App\Http\Controllers\Transaction\getTransaction;
+
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,14 +49,18 @@ Route::get('/avatar', [App\http\Controllers\Avatar\getController::class, 'GetDat
 //posts
 Route::get('/diamond', [getController::class, 'getDiamond']);
 Route::get('/diamond/{id}', [detailController::class, 'detailDiamond']);
-Route::post('/diamond', [postController::class, 'AddDiamond']);
+Route::post('/diamond', [App\Http\Controllers\Diamond\insertController::class, 'insertController']);
 Route::put('/diamond/{id}', [updateController::class, 'updateDiamond']);
 Route::delete('/Diamond/{id}', [deleteController::class, 'removeDiamond']);
 
-
+//User
 Route::get('/user', [getsController::class, 'getUsers']);
 Route::get('/user/{id}', [detailsController::class, 'detailUser']);
-Route::post('/user', [postsController::class, 'AddUser']);
+Route::post('/user', [App\Http\Controllers\User\postsController::class, 'AddUser']);
 Route::put('/User/{id}', [updatesController::class, 'updateUser']);
 Route::delete('/User/{id}', [deletesController::class, 'removeUser']);
 
+//Transaction
+
+Route::get('/transaction', [getTransaction::class, 'GetTransaction']);
+Route::post('/transaction', [App\Http\Controllers\Transaction\insertTransaction::class, 'insertController']);

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class posts extends Model
+class Diamonds extends Model
 {
     use HasFactory;
 
@@ -25,4 +25,3 @@ class posts extends Model
         return $this->belongsTo(Transaction::class);
     }
 }
-

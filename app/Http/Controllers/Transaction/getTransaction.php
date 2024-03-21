@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class getTransaction extends Controller
 {
-    public function GetDataController()
+    public function GetTransaction()
     {
         $Transaction = Transaction::all();
         return new TransactionResource(true, 'List Transaction', $Transaction);

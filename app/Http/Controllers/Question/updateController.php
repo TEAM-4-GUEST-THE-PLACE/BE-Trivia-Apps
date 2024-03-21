@@ -13,15 +13,17 @@ class updateController extends Controller
 {
     public function updateDataController(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'question' => 'required',
             'options' => 'required | array',
-            'answer' => 'required',
+            'correct_option' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(),400);
         }
+
+
+        $uploadedFileUrl = $request->file('image')->storeOnCloudinary('questionImage');
 
         $questions = Question::find($id);
 
@@ -33,18 +35,17 @@ class updateController extends Controller
             Storage::delete('public/questionImage' .basename($questions->image));
 
             $questions->update([
-                'question' => $request->question,
-                'options' => $request->answer,
-                'answer' => $request->answerTrue,
-                'image' => $image->hashName(),
+                'options' => $request->options,
+                'correct_option' => $request->correct_option  ,
+                'image' => $uploadedFileUrl->getSecurePath(),
             ]);
 
         } else {
 
             $questions->update([
-                'question' => $request->question,
-                'options' => $request->answer,
-                'answer' => $request->answerTrue,
+                'options' => $request->correct_option,
+                'correct_option' => $request->correct_optionTrue,
+                'image' => $uploadedFileUrl->getSecurePath()
             ]);
         }
 

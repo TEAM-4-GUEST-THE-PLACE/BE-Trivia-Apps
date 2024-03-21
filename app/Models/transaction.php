@@ -12,6 +12,8 @@ class Transaction extends Model
     protected $fillable = [
         'user_id',
         'diamond_id',
+        'price',
+        'status',
     ];
 
     public function user()
@@ -21,6 +23,6 @@ class Transaction extends Model
 
     public function diamond()
     {
-        return $this->hasMany(Diamond::class);
+        return $this->hasMany(Diamonds::class);
     }
 }
