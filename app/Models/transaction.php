@@ -5,21 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Avatar extends Model
+class Transaction extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'image',
-        'price',
+        'user_id',
+        'diamond_id',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
+    }
+
+    public function diamond()
+    {
+        return $this->hasMany(Diamond::class);
     }
 }
-
-
-
-
