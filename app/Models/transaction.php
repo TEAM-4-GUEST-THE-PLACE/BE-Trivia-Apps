@@ -21,6 +21,6 @@ class Transaction extends Model
 
     public function diamond()
     {
-        return $this->hasMany(Diamond::class);
+        return $this->hasMany(Diamonds::class);
     }
 }
