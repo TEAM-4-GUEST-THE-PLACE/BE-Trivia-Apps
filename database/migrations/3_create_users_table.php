@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('avatars_id')->nullable();
             $table->integer('diamonds_totals')->nullable();
-            $table->string('fullname');
-            $table->string('username');
-            $table->string('email');
+            $table->string('fullname')->nullable();
+            $table->string('username')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
             
             $table->foreign('avatars_id')->references('id')->on('avatars')->onDelete('cascade');

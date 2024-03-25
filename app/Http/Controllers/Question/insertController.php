@@ -28,9 +28,8 @@ class insertController extends Controller
         
 
         $createQuestion = Question::create([
-            'question' => $request->question,
             'options' => $request->options,
-            'answer' => $request->answer,
+            'correct_option' => $request->correct_option,
             'image' => $uploadedFileUrl->getSecurePath(),
         ]);
         return new QuestionResource(true, 'Succes Insert Data', $createQuestion);

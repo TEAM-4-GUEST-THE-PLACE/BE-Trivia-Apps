@@ -13,9 +13,8 @@ class updateController extends Controller
 {
     public function updateDataController(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'question' => 'required',
             'options' => 'required | array',
-            'answer' => 'required',
+            'correct_option' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -35,7 +34,7 @@ class updateController extends Controller
             $questions->update([
                 'question' => $request->question,
                 'options' => $request->answer,
-                'answer' => $request->answerTrue,
+                'correct_option' => $request->correct_option,
                 'image' => $image->hashName(),
             ]);
 
@@ -44,7 +43,7 @@ class updateController extends Controller
             $questions->update([
                 'question' => $request->question,
                 'options' => $request->answer,
-                'answer' => $request->answerTrue,
+                'correct_option' => $request->correct_option,
             ]);
         }
 

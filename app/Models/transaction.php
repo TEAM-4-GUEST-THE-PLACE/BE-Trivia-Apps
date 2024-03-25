@@ -12,6 +12,8 @@ class Transaction extends Model
     protected $fillable = [
         'user_id',
         'diamond_id',
+        'price',
+        'status',
     ];
 
     public function user()

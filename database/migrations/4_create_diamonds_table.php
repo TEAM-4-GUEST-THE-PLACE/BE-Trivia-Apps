@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('diamonds', function (Blueprint $table) {
             $table->id();
-            $table->string('amount')->nullable();
+            $table->integer('amount')->nullable();
             $table->string('price')->nullable();
             $table->timestamps();
         });
