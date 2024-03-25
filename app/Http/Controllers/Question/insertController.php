@@ -13,9 +13,8 @@ class insertController extends Controller
 {
     public function insertDataController(Request $request) {
         $validator = Validator::make($request->all(), [
-        'question' => 'required',
         'options' => 'required | array',
-        'answer' => 'required',
+        'correct_option' => 'required',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 

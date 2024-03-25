@@ -22,6 +22,9 @@ class updateController extends Controller
             return response()->json($validator->errors(),400);
         }
 
+
+        $uploadedFileUrl = $request->file('image')->storeOnCloudinary('questionImage');
+
         $questions = Question::find($id);
 
         if ($request->hasFile('image')) {
@@ -32,18 +35,18 @@ class updateController extends Controller
             Storage::delete('public/questionImage' .basename($questions->image));
 
             $questions->update([
-                'question' => $request->question,
-                'options' => $request->answer,
-                'correct_option' => $request->correct_option,
-                'image' => $image->hashName(),
+                'options' => $request->options,
+                'correct_option' => $request->correct_option  ,
+                'image' => $uploadedFileUrl->getSecurePath(),
             ]);
 
         } else {
 
             $questions->update([
-                'question' => $request->question,
-                'options' => $request->answer,
-                'correct_option' => $request->correct_option,
+
+                'options' => $request->correct_option,
+                'correct_option' => $request->correct_optionTrue,
+                'image' => $uploadedFileUrl->getSecurePath()
             ]);
         }
 

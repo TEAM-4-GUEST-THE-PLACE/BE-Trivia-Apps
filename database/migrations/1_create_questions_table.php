@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string("options")->nullable();
+            $table->json("options")->nullable();
             $table->string("correct_option")->nullable(false);
             $table->string("image")->nullable(false);
             $table->timestamps();
