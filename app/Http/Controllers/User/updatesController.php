@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 class updatesController extends Controller
 {
@@ -20,40 +18,12 @@ class updatesController extends Controller
      */
     public function updateUser(Request $request, $id)
     {
-        //define validation rules
-        $validator = validator::make($request->all(), [
-            'fullname'     => 'required',
-            'username'   => 'required',
-            'email'   => 'required',
-        ]);
+        $user = User::find($id);
 
-        //check if validation fails
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-
-        //find post by ID
-        $User = User::find($id);
-
-
-            $User->update([ 
-                'fullname'     => $request->fullname,
-                'username'     => $request->username,
-                'email'   => $request->email,
-            ]);
-
-         
-
-            //update User without image
-            $User->update([
-                'fullname'     => $request->fullname,
-                'username'   => $request->username,
-                'email'   => $request->email,
-
-            ]);
+        $user->fill($request->only(['fullname', 'username', 'email', 'diamonds_totals', 'avatars_id']));
         
+        $user->save();
 
-        //return response
-        return new UserResource(true, 'user Berhasil Diubah!', $User);
+        return new UserResource(true, 'User Berhasil Diubah!', $user);
     }
 }

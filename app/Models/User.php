@@ -14,6 +14,7 @@ class User extends Model
         'username',
         'email',
         'diamonds_totals',
+        'avatars_id'
     ];
 
     public function posts()
@@ -23,7 +24,7 @@ class User extends Model
 
     public function avatar()
     {
-        return $this->hasOne(Avatar::class);
+        return $this->hasMany(Avatar::class);
     }
 
     public function transaction()

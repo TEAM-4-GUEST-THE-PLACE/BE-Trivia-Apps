@@ -10,9 +10,6 @@ use App\Http\Controllers\User\detailsController;
 use App\Http\Controllers\User\deletesController;
 
 use App\Http\Controllers\Transaction\getTransaction;
-
-
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -57,10 +54,10 @@ Route::delete('/Diamond/{id}', [deleteController::class, 'removeDiamond']);
 Route::get('/user', [getsController::class, 'getUsers']);
 Route::get('/user/{id}', [detailsController::class, 'detailUser']);
 Route::post('/user', [App\Http\Controllers\User\postsController::class, 'AddUser']);
-Route::put('/User/{id}', [updatesController::class, 'updateUser']);
+Route::put('/user/{id}', [updatesController::class, 'updateUser']);
+Route::put('/user/{id}/update-avatar', [App\Http\Controllers\User\usersAvatarController::class, 'updateAvatar']);
 Route::delete('/User/{id}', [deletesController::class, 'removeUser']);
 
 //Transaction
-
 Route::get('/transaction', [getTransaction::class, 'GetTransaction']);
 Route::post('/transaction', [App\Http\Controllers\Transaction\insertTransaction::class, 'insertController']);

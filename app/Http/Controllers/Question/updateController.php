@@ -43,6 +43,7 @@ class updateController extends Controller
         } else {
 
             $questions->update([
+
                 'options' => $request->correct_option,
                 'correct_option' => $request->correct_optionTrue,
                 'image' => $uploadedFileUrl->getSecurePath()
