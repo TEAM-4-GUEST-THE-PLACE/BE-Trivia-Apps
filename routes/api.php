@@ -41,6 +41,8 @@ Route::delete('/questions/{id}', [App\http\Controllers\Question\deleteController
 // Avatar
 Route::post('/avatar', [App\http\Controllers\Avatar\insertController::class, 'insertDataController']);
 Route::get('/avatar', [App\http\Controllers\Avatar\getController::class, 'GetDataController']);
+Route::put('/avatar/{id}', [App\http\Controllers\Avatar\updateController::class, 'updateDataController']);
+Route::delete('/avatar/{id}', [App\http\Controllers\Avatar\deleteController::class, 'deleteDataController']);
 
 
 //posts
@@ -48,7 +50,7 @@ Route::get('/diamond', [getController::class, 'getDiamond']);
 Route::get('/diamond/{id}', [detailController::class, 'detailDiamond']);
 Route::post('/diamond', [App\Http\Controllers\Diamond\insertController::class, 'insertController']);
 Route::put('/diamond/{id}', [updateController::class, 'updateDiamond']);
-Route::delete('/Diamond/{id}', [deleteController::class, 'removeDiamond']);
+Route::delete('/diamond/{id}', [deleteController::class, 'removeDiamond']);
 
 //User
 Route::get('/user', [getsController::class, 'getUsers']);
